@@ -159,6 +159,13 @@ def download(
             show_default=False,
         ),
     ] = None,
+    set_hf_token: Annotated[
+            Optional[str],
+            typer.Option(
+                "--set_hf_token",
+                show_default=False,
+            ),
+        ] = None,
 ):
     if relative_path is not None:
         relative_path = os.path.expanduser(relative_path)
@@ -241,6 +248,11 @@ def download(
             relative_path = os.path.join(
                 DEFAULT_COMFY_MODEL_PATH, model_path, basemodel
             )
+        if set_hf_token is not None:
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {set_hf_token}",
+            }
     else:
         print("Model source is unknown")
 
