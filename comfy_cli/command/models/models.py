@@ -162,7 +162,7 @@ def download(
     set_hf_token: Annotated[
             Optional[str],
             typer.Option(
-                "--set_hf_token",
+                "--set-hf-token",
                 show_default=False,
             ),
         ] = None,
